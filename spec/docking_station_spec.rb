@@ -24,7 +24,7 @@ describe DockingStation do
 describe DockingStation do
     it 'returns docked bikes' do
         bike = Bike.new
-        expect(subject.bike).to eq bike
+        expect(subject.bike).to eq @bike
     end
 end
 end
