@@ -4,7 +4,6 @@ describe DockingStation do
         docking_station = DockingStation.new
         expect(docking_station).to respond_to(:release_bike)
     end
-
 describe DockingStation do
     it {is_expected.to respond_to(:dock).with(1).argument}
     end
