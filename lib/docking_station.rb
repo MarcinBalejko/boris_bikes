@@ -6,6 +6,7 @@ class DockingStation
         @bike
     end
     def dock(bike)
+        fail 'No room for another bike' unless @bike == nil
         @bike = bike
     end
 end
