@@ -9,7 +9,7 @@ class DockingStation
         @bikes.pop
     end
     def dock(bike)
-        fail 'Docking station full' if @bikes >= 20
+        fail 'Docking station full' if @bikes.count >= 20
         @bikes << bike
     end
 end
