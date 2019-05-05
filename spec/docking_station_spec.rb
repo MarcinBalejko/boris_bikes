@@ -7,9 +7,7 @@ describe DockingStation do
 describe DockingStation do
     it {is_expected.to respond_to(:dock).with(1).argument}
     end
-describe DockingStation do
-    it {is_expected.to respond_to(:bike)}
-    end
+
 describe DockingStation do
         it {is_expected.to respond_to(:release_bike)}
         it "releases working bikes" do
@@ -22,11 +20,7 @@ describe DockingStation do
             bike = Bike.new
             expect(subject.dock(bike)[0]).to eq bike
         end    
-describe DockingStation do
-    it 'returns docked bikes' do
-        bike = Bike.new
-        expect(subject.bike).to eq @bike
-    end
+
 describe DockingStation do
     describe '#release_bike' do
         it 'releases bike' do
@@ -56,6 +50,15 @@ describe DockingStation do
         expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
     end
 end
+describe 'initialization' do
+    subject {DockingStation.new}
+    let(:bike) {Bike.new}
+    it 'defaults capacity' do
+        described_class::DEFAULT_CAPACITY.times do
+            subject.dock(bike)
+        end
+        expect{subject.dock(bike)}.to raise_error 'Docking station full'
+    end
 end
 end
 end
