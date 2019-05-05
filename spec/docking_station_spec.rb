@@ -1,6 +1,6 @@
 require './lib/docking_station.rb'
 describe DockingStation do
-    it "Releases a bike" do
+    it "releases a bike" do
         docking_station = DockingStation.new
         expect(docking_station).to respond_to(:release_bike)
     end
@@ -46,7 +46,7 @@ describe DockingStation do
     end
 end
 describe DockingStation do 
-    it 'Has a default capacity' do
+    it 'has a default capacity' do
         expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
     end
 end
@@ -61,15 +61,13 @@ describe 'initialization' do
     end
 end
 describe DockingStation do
-    it 'keeps the broken bike' do
-        docking_station = DockingStation.new
-        bike = Bike.new
+    let(:bike) {Bike.new}
+    it 'keeps the broken bike' do 
         bike.report_broken
-        docking_station.dock(bike)
-        expect{docking_station.release_bike}.to raise_error 'No bikes available'
+        subject.dock(bike)
+        expect{subject.release_bike}.to raise_error 'No bikes available'
     end
 end
-
 end
 end
 end
