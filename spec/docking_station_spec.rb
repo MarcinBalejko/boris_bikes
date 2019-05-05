@@ -60,6 +60,16 @@ describe 'initialization' do
         expect{subject.dock(bike)}.to raise_error 'Docking station full'
     end
 end
+describe DockingStation do
+    it 'keeps the broken bike' do
+        docking_station = DockingStation.new
+        bike = Bike.new
+        bike.report_broken
+        docking_station.dock(bike)
+        expect{docking_station.release_bike}.to raise_error 'No bikes available'
+    end
+end
+
 end
 end
 end
