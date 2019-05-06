@@ -2,14 +2,6 @@ require './lib/docking_station.rb'
 
 describe DockingStation do
 
-    let(:bike) {double :bike}
-    it "releases working bikes" do
-        allow(bike).to receive(:working?).and_return(true)
-        subject.dock(bike)
-        released_bike = subject.release_bike
-        expect(released_bike).to be_working
-    end
-
     let(:bike) {Bike.new}
 
     it "releases a bike" do
@@ -20,7 +12,11 @@ describe DockingStation do
     
     it {is_expected.to respond_to(:release_bike)}
 
-
+    it "releases working bikes" do
+        bike = double(:bike, broken?: false)
+        subject.dock bike
+        expect(subject.release_bike).to be bike
+    end
 
     it 'docks a bike' do
         expect(subject.dock(bike)[0]).to eq bike
@@ -35,13 +31,10 @@ describe DockingStation do
         expect{subject.release_bike}.to raise_error 'No bikes available'
     end
     
-
-    describe 'dock' do
-        it 'raises an error when full' do
-          subject.capacity.times { subject.dock double :bike }
-          expect { subject.dock double(:bike) }.to raise_error 'Docking station full'
-        end
-      end
+    it 'raises an error when full' do
+        subject.capacity.times { subject.dock double :bike }
+        expect { subject.dock double(:bike) }.to raise_error 'Docking station full'
+    end
     
     it 'Has a default capacity' do
         expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
@@ -57,5 +50,11 @@ describe DockingStation do
         subject.dock(bike)
         expect{subject.release_bike}.to raise_error 'No bikes available'
     end
+
+    it 'does not release broken bikes' do
+        bike = double(:bike, broken?: true)
+        subject.dock bike
+        expect {subject.release_bike}.to raise_error 'No bikes available'
+      end
 
 end
