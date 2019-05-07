@@ -9,7 +9,7 @@ describe Van do
     end
 
     it 'leaves ok bike' do
-        bike = double(:bike, broken?: true)
+        bike = double(:bike, broken?: false)
         expect{subject.take_broken(bike)}.to raise_error 'No broken bikes'
     end
 
