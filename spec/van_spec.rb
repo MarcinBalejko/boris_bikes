@@ -12,4 +12,8 @@ describe Van do
         bike = Bike.new
         expect{subject.take_broken(bike)}.to raise_error 'No broken bikes'
     end
+
+    it 'has a default capacity' do
+    expect(subject.van_capacity).to eq Van::DEFAULT_VAN_CAPACITY
+    end
 end
