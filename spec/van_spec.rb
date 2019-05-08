@@ -24,4 +24,11 @@ describe Van do
     expect{subject.release_broken}.to raise_error 'No broken bikes available'
     end
 
+    it 'releases broken bike' do
+    bike.report_broken
+    subject.take_broken(bike)
+    expect(subject.release_broken).to eq bike
+    end
+
+
 end
