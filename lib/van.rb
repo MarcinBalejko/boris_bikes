@@ -7,6 +7,6 @@ class Van
     end
     def take_broken(bike)
         @broken_bikes << bike
-        fail 'No broken bikes' if  @broken_bikes[-1].broken? == false
+        fail 'No broken bikes' if  @broken_bikes[-1].broken? != false
     end
 end
