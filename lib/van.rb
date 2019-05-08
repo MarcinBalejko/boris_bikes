@@ -8,9 +8,9 @@ class Van
         @broken_bikes = [] 
     end
     def take_broken(bike)
-        @broken_bikes << bike
         fail 'No broken bikes' if  bike.broken? != true
         fail 'Van is full' if full?
+        @broken_bikes << bike
     end
     def release_broken
         fail 'No broken bikes available' if empty?
