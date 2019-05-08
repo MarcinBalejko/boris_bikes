@@ -9,14 +9,21 @@ class Van
     end
     def take_broken(bike)
         @broken_bikes << bike
-        fail 'No broken bikes' if  @broken_bikes[-1].broken? != true
+        fail 'No broken bikes' if  bike.broken? != true
         fail 'Van is full' if full?
+    end
+    def release_broken
+        fail 'No broken bikes available' if empty?
+        @broken_bikes.pop
     end
 
     private
     attr_reader :bikes
     def full?
         @broken_bikes.count >= @van_capacity
+    end
+    def empty?
+        @broken_bikes.empty?
     end
 
 end
