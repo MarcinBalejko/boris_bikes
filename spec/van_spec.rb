@@ -30,5 +30,10 @@ describe Van do
     expect(subject.release_broken).to eq bike
     end
 
-
+    it 'raises an error when full' do
+    bike.report_broken
+    subject.van_capacity.times { subject.take_broken(bike) }
+    expect{subject.take_broken(bike)}.to raise_error 'Van is full'
+    end
+    
 end
