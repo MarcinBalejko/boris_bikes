@@ -16,7 +16,6 @@ class Van
         fail 'No broken bikes available' if empty?
         @broken_bikes.pop
     end
-
     private
     attr_reader :bikes
     def full?
