@@ -2,7 +2,8 @@ require_relative 'van'
 require_relative 'bike'
 
 class Garage
-    attr_reader :bikes_to_repair, :garage_capacity
+    attr_reader :garage_capacity
+    attr_accessor :broken
     DEFAULT_GARAGE_CAPACITY = 3
     def initialize(garage_capacity= DEFAULT_GARAGE_CAPACITY)
         @bikes_to_repair = []
@@ -22,13 +23,14 @@ class Garage
         @bikes_to_repair.pop
     end
     private
-    attr_reader :bikes
+    attr_reader :bikes_to_repair
     def full?
         @bikes_to_repair.count >= @garage_capacity
     end
     def empty?
         @bikes_to_repair.empty?
     end
-       
+    
+    
 end
 

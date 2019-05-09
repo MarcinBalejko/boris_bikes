@@ -27,5 +27,12 @@ describe Garage do
     it 'raises an error when empty' do
         expect{subject.release_working_bike}.to raise_error 'Garage is empty'
     end
-    
+
+    it 'repairs broken bike' do
+        bike = double(:bike, broken?: true)
+        subject.receive_broken double(:bike)
+        subject.repair
+        expect(bike.broken?).to be false
+    end
+
 end
