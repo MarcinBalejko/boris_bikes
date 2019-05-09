@@ -14,14 +14,15 @@ describe Garage do
         expect(subject.receive_broken(bike)[-1]).to eq bike
     end
 
-    #it 'repairs bikes' do
-    #bike = double(:bike, broken?: true)
-    #subject.receive_broken bike
-    #subject.repair
-    #subject.
-    #end
-
     it 'has a default capacity' do
         expect(subject.garage_capacity).to eq Garage::DEFAULT_GARAGE_CAPACITY
         end
+
+    
+        it 'raises an error when full' do
+            bike.report_broken
+            subject.garage_capacity.times { subject.receive_broken(bike) }
+            expect{subject.receive_broken(bike)}.to raise_error 'Garage is full'
+            end 
+    
 end
