@@ -24,5 +24,9 @@ describe Garage do
             subject.garage_capacity.times { subject.receive_broken(bike) }
             expect{subject.receive_broken(bike)}.to raise_error 'Garage is full'
             end 
+
+            it 'raises an error when empty' do
+            expect{subject.release_working_bike}.to raise_error 'Garage is empty'
+            end
     
 end
