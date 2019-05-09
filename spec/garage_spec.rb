@@ -5,7 +5,7 @@ describe Garage do
     let(:bike) {Bike.new}
 
     it 'reacts to receive_broken method' do
-    expect(subject).to respond_to(:receive_broken)
+        expect(subject).to respond_to(:receive_broken)
     end
 
     it 'receives broken bikes' do
@@ -16,17 +16,16 @@ describe Garage do
 
     it 'has a default capacity' do
         expect(subject.garage_capacity).to eq Garage::DEFAULT_GARAGE_CAPACITY
-        end
+    end
 
-    
-        it 'raises an error when full' do
-            bike.report_broken
-            subject.garage_capacity.times { subject.receive_broken(bike) }
-            expect{subject.receive_broken(bike)}.to raise_error 'Garage is full'
-            end 
+    it 'raises an error when full' do
+        bike.report_broken
+        subject.garage_capacity.times { subject.receive_broken(bike) }
+        expect{subject.receive_broken(bike)}.to raise_error 'Garage is full'
+    end 
 
-            it 'raises an error when empty' do
-            expect{subject.release_working_bike}.to raise_error 'Garage is empty'
-            end
+    it 'raises an error when empty' do
+        expect{subject.release_working_bike}.to raise_error 'Garage is empty'
+    end
     
 end

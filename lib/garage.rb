@@ -11,7 +11,6 @@ class Garage
     def receive_broken(bike)
         fail 'Garage is full' if full?
         @bikes_to_repair << bike
-
     end
     def repair
         @bikes_to_repair.each do |x|
@@ -22,18 +21,14 @@ class Garage
         fail 'Garage is empty' if empty? || @bikes_to_repair[-1].broken? != false
         @bikes_to_repair.pop
     end
-
     private
     attr_reader :bikes
     def full?
         @bikes_to_repair.count >= @garage_capacity
     end
-
     def empty?
         @bikes_to_repair.empty?
     end
-
-
-    
+       
 end
 
