@@ -32,7 +32,14 @@ describe Garage do
         bike = double(:bike, broken?: true)
         subject.receive_broken double(:bike)
         subject.repair
+        bike = double(:bike, broken?: false)
         expect(bike.broken?).to be false
+    end
+
+    it "releases working bike" do
+        bike = double(:bike, broken?: false)
+        subject.receive_broken bike
+        expect(subject.release_working_bike).to be bike
     end
 
 end

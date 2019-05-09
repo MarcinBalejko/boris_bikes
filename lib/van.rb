@@ -1,7 +1,7 @@
 require_relative 'bike'
 
 class Van
-    attr_reader :broken_bikes, :van_capacity
+    attr_reader :van_capacity
     DEFAULT_VAN_CAPACITY = 3
     def initialize(van_capacity= DEFAULT_VAN_CAPACITY)
         @van_capacity = van_capacity
@@ -17,7 +17,7 @@ class Van
         @broken_bikes.pop
     end
     private
-    attr_reader :bikes
+    attr_reader :broken_bikes
     def full?
         @broken_bikes.count >= @van_capacity
     end

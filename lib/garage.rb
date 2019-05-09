@@ -31,6 +31,5 @@ class Garage
         @bikes_to_repair.empty?
     end
     
-    
 end
 
