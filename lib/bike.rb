@@ -8,4 +8,7 @@ class Bike
     def broken?
         @broken
     end
+    def gets_repaired
+        @broken = false
+    end
 end

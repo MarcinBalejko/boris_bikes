@@ -3,7 +3,6 @@ require_relative 'bike'
 
 class Garage
     attr_reader :garage_capacity
-    attr_accessor :broken
     DEFAULT_GARAGE_CAPACITY = 3
     def initialize(garage_capacity= DEFAULT_GARAGE_CAPACITY)
         @bikes_to_repair = []
@@ -15,11 +14,11 @@ class Garage
     end
     def repair
         @bikes_to_repair.each do |x|
-            @broken = false  
+            x.gets_repaired 
         end
     end
     def release_working_bike
-        fail 'Garage is empty' if empty? || @bikes_to_repair[-1].broken? != false
+        fail 'Garage is empty' if empty? || @bikes_to_repair[-1].broken? == true  # tu zmienione z != false
         @bikes_to_repair.pop
     end
     private
