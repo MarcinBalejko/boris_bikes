@@ -29,10 +29,9 @@ describe Garage do
     end
 
     it 'repairs broken bike' do
-        bike = double(:bike, broken?: true)
-        subject.receive_broken double(:bike)
+        bike.report_broken
+        subject.receive_broken(bike)
         subject.repair
-        bike = double(:bike, broken?: false)
         expect(bike.broken?).to be false
     end
 
