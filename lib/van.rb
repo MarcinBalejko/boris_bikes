@@ -1,5 +1,6 @@
 require_relative 'bike'
-
+require_relative 'garage'
+require_relative 'docking_station'
 class Van
     attr_reader :van_capacity
     DEFAULT_VAN_CAPACITY = 3
@@ -16,6 +17,12 @@ class Van
         fail 'No broken bikes available' if empty?
         @broken_bikes.pop
     end
+    def pass_to_garage(garage)
+        bikes_set = @broken_bikes
+        garage.collect_vans_bikes(bikes_set)
+        @broken_bikes = []
+    end
+    
     private
     attr_reader :broken_bikes
     def full?

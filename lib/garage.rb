@@ -12,13 +12,17 @@ class Garage
         fail 'Garage is full' if full?
         @bikes_to_repair << bike
     end
+    def collect_vans_bikes(package)
+        @bikes_to_repair << package
+    end
     def repair
-        @bikes_to_repair.each do |x|
-            x.gets_repaired 
+        @bikes_to_repair = @bikes_to_repair.flatten                         
+        @bikes_to_repair.each do |bike|
+            bike.gets_repaired 
         end
     end
     def release_working_bike
-        fail 'Garage is empty' if empty? || @bikes_to_repair[-1].broken? == true  # tu zmienione z != false
+        fail 'Garage is empty' if empty? || @bikes_to_repair[-1].broken? == true 
         @bikes_to_repair.pop
     end
     private

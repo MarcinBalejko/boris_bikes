@@ -1,4 +1,6 @@
 require_relative 'bike'
+require_relative 'garage'
+require_relative 'van'
 class DockingStation
     attr_reader :capacity
     DEFAULT_CAPACITY = 20
