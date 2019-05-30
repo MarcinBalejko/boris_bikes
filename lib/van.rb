@@ -18,6 +18,7 @@ class Van
         @broken_bikes.pop
     end
     def pass_to_garage(garage)
+        fail 'No broken bikes available' if empty?
         bikes_set = @broken_bikes
         garage.collect_vans_bikes(bikes_set)
         @broken_bikes = []

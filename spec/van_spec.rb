@@ -1,5 +1,6 @@
 require './lib/van.rb'
 require './lib/bike.rb'
+require './lib/garage.rb'
 
 describe Van do
 
@@ -36,4 +37,11 @@ describe Van do
     expect{subject.take_broken(bike)}.to raise_error 'Van is full'
     end
     
+    it 'raises error when no bikes to pass' do
+        garage = Garage.new
+        bike.report_broken
+        subject.van_capacity.times { subject.take_broken(bike)}
+        subject.pass_to_garage(garage)
+        expect{ subject.pass_to_garage(garage) }.to raise_error 'No broken bikes available'
+    end
 end

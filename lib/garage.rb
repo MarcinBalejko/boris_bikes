@@ -1,5 +1,6 @@
 require_relative 'van'
 require_relative 'bike'
+require_relative 'docking_station'
 
 class Garage
     attr_reader :garage_capacity
