@@ -10,7 +10,6 @@ describe Garage do
     end
 
     it 'receives broken bikes' do
-        bike = Bike.new
         bike.report_broken
         expect(subject.receive_broken(bike)[-1]).to eq bike
     end
@@ -36,7 +35,7 @@ describe Garage do
         expect(bike.broken?).to be false
     end
 
-    it "releases working bike" do
+    it 'releases working bike' do
         bike = double(:bike, broken?: false)
         subject.receive_broken bike
         expect(subject.release_working_bike).to be bike
@@ -48,7 +47,7 @@ describe Garage do
             van.van_capacity.times { van.take_broken(bike) }
         end
 
-        it "receives the set of broken bikes from van" do
+        it 'receives the set of broken bikes from van' do
             van.pass_to_garage(subject)
             expect{ subject.receive_broken(bike) }.to raise_error 'Garage is full'
         end
