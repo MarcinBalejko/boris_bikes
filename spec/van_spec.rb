@@ -7,19 +7,16 @@ describe Van do
     let(:bike) {Bike.new}
     let(:garage) {Garage.new}
 
-
     it 'leaves working bike' do
-        bike = Bike.new
-        expect{subject.take_broken(bike)}.to raise_error 'No broken bikes'
+        expect{ subject.take_broken(bike) }.to raise_error 'No broken bikes'
     end
 
     it 'has a default capacity' do
         expect(subject.van_capacity).to eq Van::DEFAULT_VAN_CAPACITY
     end
 
-
     it 'raises an error when empty' do
-        expect{subject.release_broken}.to raise_error 'No broken bikes available'
+        expect{ subject.release_broken }.to raise_error 'No broken bikes available'
     end
 
     it 'releases broken bike' do
@@ -31,11 +28,11 @@ describe Van do
     context 'when van is loaded' do
         before do
             bike.report_broken
-            subject.van_capacity.times { subject.take_broken(bike)}
+            subject.van_capacity.times { subject.take_broken(bike) }
         end
 
         it 'raises an error when full' do
-            expect{subject.take_broken(bike)}.to raise_error 'Van is full'
+            expect{ subject.take_broken(bike) }.to raise_error 'Van is full'
         end
 
         it 'raises error when no bikes to pass' do
