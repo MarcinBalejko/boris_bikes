@@ -7,4 +7,10 @@ describe Bike do
     subject.report_broken
     expect(subject).to be_broken
     end
+
+    it 'can get repaired' do
+        subject.report_broken
+        subject.gets_repaired
+        expect(subject).not_to be_broken
+    end
 end
