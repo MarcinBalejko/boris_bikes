@@ -15,9 +15,9 @@ class Garage
     end
     def collect_vans_bikes(package)
         @bikes_to_repair << package
+        @bikes_to_repair = @bikes_to_repair.flatten
     end
-    def repair
-        @bikes_to_repair = @bikes_to_repair.flatten                         
+    def repair                        
         @bikes_to_repair.each do |bike|
             bike.gets_repaired 
         end
@@ -29,7 +29,7 @@ class Garage
     private
     attr_reader :bikes_to_repair
     def full?
-        @bikes_to_repair.count >= @garage_capacity
+        @bikes_to_repair.count >= @garage_capacity 
     end
     def empty?
         @bikes_to_repair.empty?
